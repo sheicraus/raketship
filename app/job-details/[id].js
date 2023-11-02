@@ -18,6 +18,7 @@ import {
 } from "../../components";
 import useFetch from "../../hook/useFetch";
 import { COLORS, SIZES, icons } from "../../constants";
+import { jobTabs } from "../../constants/constants";
 
 export default function JobDetails() {
   const params = useGlobalSearchParams();
@@ -25,12 +26,26 @@ export default function JobDetails() {
   const { id } = params;
 
   const [refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = () => {}
+  const [activeTab, setActiveTab] = useState(jobTabs[0]);
 
   const { data, isLoading, error, refetch } = useFetch("job-details", {
     job_id: id,
   });
+  
+  const onRefresh = () => {}
+
+  const displayTabContent = () => {
+    switch (activeTab) {
+      case jobTabs[0]: // About
+        return <JobAbout info={data[0].job_description ?? "No data provided."} />
+      case jobTabs[1]: // Qualifications
+        return <Specifics title="Qualifications" points={data[0].job_highlights?.Qualifications ?? ['N/A']}/>
+        case jobTabs[2]: // Responsibilities
+        return <Specifics title="Responsibilities" points={data[0].job_highlights?.Responsibilities ?? ['N/A']}/>
+      default:
+        break;
+    }
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -73,11 +88,15 @@ export default function JobDetails() {
                 name={data[0].employer_name} 
                 jobTitle={data[0].job_title} 
               />
-              <JobTabs job={data[0]} />
+              <JobTabs tabs={jobTabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+              {displayTabContent()}
             </View>
           }
 
+
         </ScrollView>
+
+        <JobFooter url={data[0]?.job_google_link ?? `https://careers.google.com/jobs/results`}/>
       </>
 
     </SafeAreaView>
