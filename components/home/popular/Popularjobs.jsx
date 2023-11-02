@@ -13,7 +13,7 @@ const Popularjobs = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popular Jobs</Text>
+        <Text style={styles.headerTitle}>Popular Rakets</Text>
         <TouchableOpacity onPress={() => {}}>
           <Text style={styles.headerBtn}>Show all</Text>
         </TouchableOpacity>
