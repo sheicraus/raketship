@@ -3,12 +3,12 @@ import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-
 import { useRouter } from 'expo-router'
 
 import styles from './welcome.style'
-import { icons, SIZES } from '../../../constants'
+import { COLORS, icons, SIZES } from '../../../constants'
 import { jobTypes } from '../../../constants/constants'
 
 const Welcome = () => {
   const router = useRouter();
-  const [search, setSearch] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [activeJobType, setActiveJobType] = useState(jobTypes[0]);
 
   return (
@@ -20,9 +20,18 @@ const Welcome = () => {
 
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
-          <TextInput style={styles.searchInput} value='' onChange={()=>{}} placeholder="What are you looking for?"/>
+          <TextInput 
+            style={styles.searchInput} 
+            value={searchTerm} 
+            onChangeText={(text)=>setSearchTerm(text)} 
+            placeholder="What are you looking for?"
+            placeholderTextColor={COLORS.gray2}
+          />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity 
+          style={styles.searchBtn} 
+          onPress={() => { if (searchTerm) router.push(`/search/${searchTerm}`)}}
+        >
           <Image source={icons.search} resizeMode='contain' style={styles.searchBtnImage} />
         </TouchableOpacity>
       </View>

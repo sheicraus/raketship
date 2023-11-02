@@ -13,6 +13,7 @@ const Company = ({logo, name, location, jobTitle}) => {
           source={{
             uri: checkImgURL(logo)? logo : fallback
           }}
+          resizeMode='contain'
           style={styles.logoImage}
         />
       </View>
