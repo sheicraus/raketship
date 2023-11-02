@@ -2,14 +2,13 @@ import React, {useState} from 'react'
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
 import { useRouter } from 'expo-router'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard'
-
+import useFetch from '../../../hook/useFetch'
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from '../../../constants'
 
 const Popularjobs = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const {data, error, isLoading} = useFetch('search', {query: 'React native developer', num_pages: 1});
 
   return (
     <View style={styles.container}>
@@ -30,7 +29,7 @@ const Popularjobs = () => {
           :
           <FlatList
             horizontal
-            data={[1,2,3]}
+            data={data}
             keyExtractor={item => item?.job_id}
             renderItem={({item}) => (
               <PopularJobCard item={item}/>
@@ -38,6 +37,7 @@ const Popularjobs = () => {
             contentContainerStyle={{
               columnGap: SIZES.medium
             }}
+            showsHorizontalScrollIndicator={false}
           />
         }
       </View>
