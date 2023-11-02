@@ -8,6 +8,26 @@
       "expo-router"
     ],
     "name": "raketship",
-    "slug": "raketship"
+    "slug": "raketship",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "9a46e933-d212-44ca-b6e1-70339420653d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9a46e933-d212-44ca-b6e1-70339420653d"
+    },
+    "android": {
+      "package": "com.sheicraus.raketship"
+    },
+    "ios": {
+      "bundleIdentifier": "com.sheicraus.raketship"
+    }
   }
 }

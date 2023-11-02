@@ -14,7 +14,7 @@ const Welcome = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Hello, Sheila!</Text>
+        <Text style={styles.userName}>Hello, Sheila! 👋🏻</Text>
         <Text style={styles.welcomeMessage}>Find your next raket</Text>
       </View>
 
@@ -24,7 +24,7 @@ const Welcome = () => {
             style={styles.searchInput} 
             value={searchTerm} 
             onChangeText={(text)=>setSearchTerm(text)} 
-            placeholder="What are you looking for?"
+            placeholder="Search for jobs..."
             placeholderTextColor={COLORS.gray2}
           />
         </View>
@@ -36,7 +36,7 @@ const Welcome = () => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.tabsContainer}>
+      {/* <View style={styles.tabsContainer}>
         <FlatList 
           horizontal
           data={jobTypes}
@@ -54,7 +54,7 @@ const Welcome = () => {
             </TouchableOpacity>
           )}
         />
-      </View>
+      </View> */}
     </View>
   )
 }

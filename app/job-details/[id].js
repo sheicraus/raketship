@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -32,7 +32,9 @@ export default function JobDetails() {
     job_id: id,
   });
   
-  const onRefresh = () => {}
+  const onRefresh = useCallback(() => {
+    refetch();
+  }, [])
 
   const displayTabContent = () => {
     switch (activeTab) {
@@ -57,9 +59,9 @@ export default function JobDetails() {
           headerLeft: () => (
             <ScreenHeaderBtn iconUrl={icons.left} dimension="60%" handlePress={()=>router.back()}/>
           ),
-          headerRight: () => (
-            <ScreenHeaderBtn iconUrl={icons.share} dimension="60%" />
-          ),
+          // headerRight: () => (
+          //   <ScreenHeaderBtn iconUrl={icons.share} dimension="60%" />
+          // ),
           headerTitle: "",
         }}
      />

@@ -2,14 +2,13 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 
 import styles from './popularjobcard.style'
-import { InteractionManager } from 'react-native-web'
 import { checkImgURL, fallback } from '../../../../utils'
 
 const PopularJobCard = ({item, selectedJob, handleCardPress}) => {
   return (
     <TouchableOpacity
       style={styles.container(selectedJob, item)}
-      onPress={()=>handleCardPress(InteractionManager)}
+      onPress={()=>handleCardPress(item)}
     >
       <TouchableOpacity
         style={styles.logoContainer(selectedJob, item)}

@@ -8,15 +8,21 @@ import { COLORS, SIZES } from '../../../constants'
 
 const Popularjobs = () => {
   const router = useRouter();
-  const {data, error, isLoading} = useFetch('search', {query: 'React native developer', num_pages: 1});
+  const {data, error, isLoading} = useFetch('search', {query: 'developer', num_pages: 1});
+  const [selectedJob, setSelectedJob] = useState(null)
+
+  const handleCardPress = (item) => {
+    router.push(`job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Popular Rakets</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <Text style={styles.headerTitle}>Jobs For You</Text>
+        {/* <TouchableOpacity onPress={() => {}}>
           <Text style={styles.headerBtn}>Show all</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View style={styles.cardsContainer}>
@@ -32,7 +38,7 @@ const Popularjobs = () => {
             data={data}
             keyExtractor={item => item?.job_id}
             renderItem={({item}) => (
-              <PopularJobCard item={item}/>
+              <PopularJobCard item={item} selectedJob={selectedJob} handleCardPress={handleCardPress} />
             )}
             contentContainerStyle={{
               columnGap: SIZES.medium

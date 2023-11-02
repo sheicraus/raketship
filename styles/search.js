@@ -4,7 +4,14 @@ import { COLORS, FONT, SIZES } from "../constants";
 
 const styles = StyleSheet.create({
     container: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
         width: "100%",
+        padding: SIZES.medium,
+        backgroundColor: COLORS.lightWhite,
+        flex:1
     },
     searchTitle: {
         fontFamily: FONT.bold,
@@ -21,11 +28,17 @@ const styles = StyleSheet.create({
         marginTop: SIZES.medium
     },
     footerContainer: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
         marginTop: SIZES.small,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        gap: 10
+        gap: 10,
+        padding: SIZES.medium,
+        backgroundColor: COLORS.lightWhite
     },
     paginationButton: {
         width: 30,

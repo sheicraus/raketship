@@ -21,7 +21,7 @@ export default useFetch = (endpoint, params) => {
 
     try {
       const response = await axios.request(options);
-      console.log(response);
+      // console.log(response);
       setData(response.data.data);
     } catch (e) {
       setError(e);

@@ -1,10 +1,11 @@
-import { SafeAreaView, ScrollView, View } from 'react-native'
+import { SafeAreaView, ScrollView, Text, View } from 'react-native'
 import React from 'react'
 import { Stack, useRouter } from 'expo-router'
 
 import { COLORS, icons, images, SIZES } from '../constants'
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome}
 from '../components';
+import AppLogo from '../components/common/AppLogo';
 
 export default function Home() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function Home() {
         options={{
           headerStyle: {backgroundColor: COLORS.lightWhite},
           headerShadowVisible: false,
-          headerLeft: () => (<ScreenHeaderBtn iconUrl={icons.menu} dimension="60%"/>),
+          headerLeft: () => (<AppLogo/>),
           headerRight: () => (<ScreenHeaderBtn iconUrl={images.profile} dimension="60%"/>),
           headerTitle: ""
         }}
@@ -24,8 +25,8 @@ export default function Home() {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{flex:1, padding: SIZES.medium}}>
             <Welcome/>
-            {/* <Popularjobs/>
-            <Nearbyjobs /> */}
+            <Popularjobs/>
+            <Nearbyjobs />
           </View>
         </ScrollView>
 
